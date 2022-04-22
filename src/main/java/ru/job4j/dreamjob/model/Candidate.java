@@ -12,6 +12,11 @@ public class Candidate {
 
     }
 
+    public Candidate(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Candidate(int id, String name, String desc, String created) {
         this.id = id;
         this.name = name;
