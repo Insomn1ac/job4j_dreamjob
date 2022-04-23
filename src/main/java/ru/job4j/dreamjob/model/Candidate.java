@@ -12,9 +12,10 @@ public class Candidate {
 
     }
 
-    public Candidate(int id, String name) {
+    public Candidate(int id, String name, String desc) {
         this.id = id;
         this.name = name;
+        this.desc = desc;
     }
 
     public Candidate(int id, String name, String desc, String created) {
