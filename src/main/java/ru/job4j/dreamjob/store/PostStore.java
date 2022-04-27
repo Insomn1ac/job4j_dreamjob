@@ -31,6 +31,7 @@ public class PostStore {
     }
 
     public void add(Post post) {
+        post.setCreated(LocalDateTime.now().format(formatter));
         posts.putIfAbsent(post.getId(), post);
     }
 
