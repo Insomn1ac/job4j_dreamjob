@@ -11,9 +11,9 @@ import java.util.concurrent.ConcurrentHashMap;
 public class PostStore {
     private static final PostStore INST = new PostStore();
     private final Map<Integer, Post> posts = new ConcurrentHashMap<>();
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     private PostStore() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         posts.put(1, new Post(1, "Junior Java Job",
                 "Job for junior Java developer", LocalDateTime.now().minusMinutes(1).format(formatter)));
         posts.put(2, new Post(2, "Middle Java Job",
@@ -32,5 +32,14 @@ public class PostStore {
 
     public void add(Post post) {
         posts.putIfAbsent(post.getId(), post);
+    }
+
+    public Post findById(int id) {
+        return posts.get(id);
+    }
+
+    public void update(Post post) {
+        post.setCreated(LocalDateTime.now().format(formatter));
+        posts.replace(post.getId(), post);
     }
 }
