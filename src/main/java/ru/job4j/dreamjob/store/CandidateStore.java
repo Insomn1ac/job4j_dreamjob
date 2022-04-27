@@ -11,9 +11,9 @@ import java.util.concurrent.ConcurrentHashMap;
 public class CandidateStore {
     private static final CandidateStore INST = new CandidateStore();
     private final Map<Integer, Candidate> candidates = new ConcurrentHashMap<>();
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     private CandidateStore() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         candidates.put(1, new Candidate(1, "Ivan Ivanov",
                 "Middle Java dev", LocalDateTime.now().minusMinutes(1).format(formatter)));
         candidates.put(2, new Candidate(2, "John Smith",
@@ -28,5 +28,19 @@ public class CandidateStore {
 
     public Collection<Candidate> findAll() {
         return candidates.values();
+    }
+
+    public void add(Candidate candidate) {
+        candidate.setCreated(LocalDateTime.now().format(formatter));
+        candidates.putIfAbsent(candidate.getId(), candidate);
+    }
+
+    public Candidate findById(int id) {
+        return candidates.get(id);
+    }
+
+    public void update(Candidate candidate) {
+        candidate.setCreated(LocalDateTime.now().format(formatter));
+        candidates.replace(candidate.getId(), candidate);
     }
 }
