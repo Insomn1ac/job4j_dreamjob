@@ -1,5 +1,6 @@
 package ru.job4j.dreamjob.persistence;
 
+import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Repository;
 import ru.job4j.dreamjob.model.Candidate;
 
@@ -11,6 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Repository
+@ThreadSafe
 public class CandidateStore {
     private final Map<Integer, Candidate> candidates = new ConcurrentHashMap<>();
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
