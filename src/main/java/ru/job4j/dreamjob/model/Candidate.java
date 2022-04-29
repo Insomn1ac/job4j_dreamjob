@@ -10,6 +10,7 @@ public class Candidate implements Serializable {
     private String created;
     private boolean visible;
     private City city;
+    private byte[] photo;
 
     public Candidate() {
 
@@ -74,6 +75,14 @@ public class Candidate implements Serializable {
 
     public void setCity(City city) {
         this.city = city;
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
     }
 
     public boolean isVisible() {
