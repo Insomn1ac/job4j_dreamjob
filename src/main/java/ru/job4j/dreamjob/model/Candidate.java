@@ -9,6 +9,7 @@ public class Candidate implements Serializable {
     private String desc;
     private String created;
     private boolean visible;
+    private City city;
 
     public Candidate() {
 
@@ -25,6 +26,14 @@ public class Candidate implements Serializable {
         this.name = name;
         this.desc = desc;
         this.created = created;
+    }
+
+    public Candidate(int id, String name, String desc, String created, City city) {
+        this.id = id;
+        this.name = name;
+        this.desc = desc;
+        this.created = created;
+        this.city = city;
     }
 
     public int getId() {
@@ -57,6 +66,14 @@ public class Candidate implements Serializable {
 
     public void setCreated(String created) {
         this.created = created;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 
     public boolean isVisible() {

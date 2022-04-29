@@ -9,6 +9,7 @@ public class Post implements Serializable {
     private String description;
     private String created;
     private boolean visible;
+    private City city;
 
     public Post() {
 
@@ -17,6 +18,14 @@ public class Post implements Serializable {
     public Post(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public Post(int id, String name, String description, String created, City city) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.created = created;
+        this.city = city;
     }
 
     public Post(int id, String name, String description, String created) {
@@ -66,6 +75,13 @@ public class Post implements Serializable {
         this.visible = visible;
     }
 
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
 
     @Override
     public boolean equals(Object o) {
