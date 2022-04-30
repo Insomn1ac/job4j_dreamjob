@@ -23,14 +23,17 @@ public class PostStore {
         posts.put(1, new Post(1, "Junior Java Job",
                 "Job for junior Java developer",
                 LocalDateTime.now().minusMinutes(1).format(formatter),
+                false,
                 new City(1, "Москва")));
         posts.put(2, new Post(2, "Middle Java Job",
                 "Job for middle Java developer",
                 LocalDateTime.now().minusHours(3).format(formatter),
+                false,
                 new City(2, "Санкт-Петербург")));
         posts.put(3, new Post(3, "Senior Java Job",
                 "Job for senior Java developer",
                 LocalDateTime.now().minusDays(1).format(formatter),
+                false,
                 new City(5, "Омск")));
     }
 
