@@ -23,14 +23,17 @@ public class CandidateStore {
         candidates.put(1, new Candidate(1, "Ivan Ivanov",
                 "Middle Java dev",
                 LocalDateTime.now().minusMinutes(1).format(formatter),
+                false,
                 new City(4, "Пермь")));
         candidates.put(2, new Candidate(2, "John Smith",
                 "Junior Java dev",
                 LocalDateTime.now().minusHours(3).format(formatter),
+                false,
                 new City(5, "Омск")));
         candidates.put(3, new Candidate(3, "Irina Stepanova",
                 "Senior Java dev",
                 LocalDateTime.now().minusDays(1).format(formatter),
+                false,
                 new City(1, "Москва")));
     }
 

@@ -29,12 +29,28 @@ public class Candidate implements Serializable {
         this.created = created;
     }
 
-    public Candidate(int id, String name, String desc, String created, City city) {
+    public Candidate(int id, String name, String desc, String created, boolean visible, City city) {
         this.id = id;
         this.name = name;
         this.desc = desc;
         this.created = created;
+        this.visible = visible;
         this.city = city;
+    }
+
+    public Candidate(int id, String name, String desc, String created, boolean visible, City city, byte[] photo) {
+        this.id = id;
+        this.name = name;
+        this.desc = desc;
+        this.created = created;
+        this.visible = visible;
+        this.city = city;
+        this.photo = photo;
+    }
+
+    public Candidate(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public int getId() {
