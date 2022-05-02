@@ -103,4 +103,13 @@ public class CandidateDbStore {
             e.printStackTrace();
         }
     }
+
+    public void clearTable() {
+        try (Connection connection = pool.getConnection();
+             PreparedStatement stmt = connection.prepareStatement("DELETE FROM candidate")) {
+            stmt.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

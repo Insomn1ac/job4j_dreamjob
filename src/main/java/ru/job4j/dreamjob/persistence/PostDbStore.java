@@ -95,4 +95,13 @@ public class PostDbStore {
             e.printStackTrace();
         }
     }
+
+    public void clearTable() {
+        try (Connection connection = pool.getConnection();
+        PreparedStatement stmt = connection.prepareStatement("DELETE FROM post")) {
+            stmt.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
