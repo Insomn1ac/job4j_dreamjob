@@ -16,19 +16,6 @@ public class Candidate implements Serializable {
 
     }
 
-    public Candidate(int id, String name, String desc) {
-        this.id = id;
-        this.name = name;
-        this.desc = desc;
-    }
-
-    public Candidate(int id, String name, String desc, String created) {
-        this.id = id;
-        this.name = name;
-        this.desc = desc;
-        this.created = created;
-    }
-
     public Candidate(int id, String name, String desc, String created, boolean visible, City city) {
         this.id = id;
         this.name = name;
@@ -120,12 +107,11 @@ public class Candidate implements Serializable {
         Candidate candidate = (Candidate) o;
         return id == candidate.id
                 && Objects.equals(name, candidate.name)
-                && Objects.equals(desc, candidate.desc)
-                && Objects.equals(created, candidate.created);
+                && Objects.equals(desc, candidate.desc);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, desc, created);
+        return Objects.hash(id, name, desc);
     }
 }

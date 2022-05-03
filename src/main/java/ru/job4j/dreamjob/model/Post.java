@@ -29,13 +29,6 @@ public class Post implements Serializable {
         this.city = city;
     }
 
-    public Post(int id, String name, String description, String created) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.created = created;
-    }
-
     public int getId() {
         return id;
     }

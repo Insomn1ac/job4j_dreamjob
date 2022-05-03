@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import ru.job4j.dreamjob.Main;
+import ru.job4j.dreamjob.model.City;
 import ru.job4j.dreamjob.model.Post;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class PostDbStoreTest {
 
     @Test
     public void whenCreatePost() {
-        Post post = new Post(0, "Java Job");
+        Post post = new Post(0, "Java Job", "Java", "today", true, new City());
         store.add(post);
         Post postInDb = store.findById(post.getId());
         assertThat(postInDb.getName(), is(post.getName()));
@@ -35,8 +36,8 @@ public class PostDbStoreTest {
     @Test
     public void whenGetAllPostsFromDB() {
         List<Post> posts = List.of(
-                new Post(1, "Junior"),
-                new Post(2, "Middle"));
+                new Post(1, "Junior", "Junior Java job", "two days ago", true, new City()),
+                new Post(2, "Middle", "Middle Java job", "yesterday", false, new City()));
         for (Post post : posts) {
             store.add(post);
         }
@@ -45,10 +46,22 @@ public class PostDbStoreTest {
 
     @Test
     public void whenUpdatePost() {
-        Post post = new Post(2, "Middle");
+        Post post = new Post(2,
+                "Middle",
+                "Middle Java job",
+                "in last month",
+                true,
+                new City()
+        );
         store.add(post);
-        post.setName("Senior");
-        store.update(post);
-        assertThat(store.findById(2).getName(), is("Senior"));
+        Post updated = new Post(post.getId(),
+                "Senior",
+                "Senior Java job",
+                "in last month",
+                true,
+                post.getCity()
+        );
+        store.update(updated);
+        assertThat(store.findById(post.getId()).getName(), is("Senior"));
     }
 }
