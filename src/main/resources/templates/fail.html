@@ -4,6 +4,29 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <style>
+        .alert {
+            padding: 20px;
+            background-color: #f44336;
+            color: white;
+        }
+
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .closebtn:hover {
+            color: black;
+        }
+    </style>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -29,46 +52,17 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="#">Главная</a>
-                <a class="nav-item nav-link active" th:href="@{/posts}">Вакансии <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" th:href="@{/posts}">Вакансии</a>
                 <a class="nav-item nav-link" th:href="@{/formAddPost}">Добавить вакансию</a>
                 <a class="nav-item nav-link" th:href="@{/candidates}">Кандидаты</a>
                 <a class="nav-item nav-link" th:href="@{/formAddCandidate}">Добавить кандидата</a>
-                <a class="nav-item nav-link" th:href="@{/formAddUser}">Регистрация</a>
+                <a class="nav-item nav-link active" th:href="@{/formAddUser}">Регистрация <span class="sr-only">(current)</span></a>
             </div>
         </div>
     </nav>
-    <div class="row">
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Имя</th>
-                <th scope="col">Описание</th>
-                <th scope="col">Город</th>
-                <th scope="col">Время создания</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="post: ${posts}">
-                <td th:text="${post.id}"></td>
-                <td>
-                    <a th:href="@{|/formUpdatePost/${post.id}|}">
-                        <i class="fa fa-edit"></i>
-                    </a>
-                    <span th:text="${post.name}"></span>
-                    <span th:if="${post.visible}">
-                        <i class="fa fa-check-square-o"></i>
-                    </span>
-                    <span th:if="${!post.visible}">
-                        <i class="fa fa-square-o"></i>
-                    </span>
-                </td>
-                <td th:text="${post.description}"></td>
-                <td th:text="${post.city}"></td>
-                <td th:text="${post.created}"></td>
-            </tr>
-            </tbody>
-        </table>
+    <div class="alert">
+        <span class="closebtn" onclick="window.history.back()">&times;</span>
+        Пользователь с такой почтой уже существует.
     </div>
 </div>
 </body>
