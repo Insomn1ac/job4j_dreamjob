@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @ThreadSafe
@@ -21,7 +22,7 @@ public class UserDbStore {
         this.pool = pool;
     }
 
-    public User add(User user) {
+    public Optional<User> add(User user) {
         try (Connection connection = pool.getConnection();
              PreparedStatement stmt = connection.prepareStatement(
                      "INSERT INTO users(name, email, password) VALUES (?, ?, ?)",
@@ -39,7 +40,7 @@ public class UserDbStore {
             e.printStackTrace();
             user = null;
         }
-        return user;
+        return Optional.ofNullable(user);
     }
 
     public User findUserByName(String name) {

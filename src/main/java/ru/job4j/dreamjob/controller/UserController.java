@@ -37,7 +37,7 @@ public class UserController {
 
     @PostMapping("/createUser")
     public String createUser(Model model, @ModelAttribute User user) {
-        Optional<User> regUser = Optional.ofNullable(service.add(user));
+        Optional<User> regUser = service.add(user);
         if (regUser.isEmpty()) {
             model.addAttribute("message", "Пользователь с такой почтой уже существует");
             return "redirect:/fail";
