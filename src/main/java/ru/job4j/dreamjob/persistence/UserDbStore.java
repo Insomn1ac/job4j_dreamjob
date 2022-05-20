@@ -60,6 +60,25 @@ public class UserDbStore {
         return null;
     }
 
+    public Optional<User> findUserByEmailAndPwd(String email, String password) {
+        Optional<User> rsl = Optional.empty();
+        try (Connection connection = pool.getConnection();
+             PreparedStatement stmt = connection.prepareStatement("SELECT name FROM users WHERE email = ? AND password = ?")) {
+            stmt.setString(1, email);
+            stmt.setString(2, password);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    rsl = Optional.of(
+                            new User(rs.getString("name"))
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rsl;
+    }
+
     public List<User> findAll() {
         List<User> users = new ArrayList<>();
         try (Connection connection = pool.getConnection();
