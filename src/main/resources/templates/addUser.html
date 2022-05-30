@@ -17,28 +17,6 @@
 </head>
 <body>
 <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Работа мечты, <small th:text="${user.name}"></small>!</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link" th:href="@{/index}">Главная</a>
-                <a class="nav-item nav-link" th:href="@{/posts}">Вакансии</a>
-                <a class="nav-item nav-link" th:href="@{/formAddPost}">Добавить вакансию</a>
-                <a class="nav-item nav-link" th:href="@{/candidates}">Кандидаты</a>
-                <a class="nav-item nav-link" th:href="@{/formAddCandidate}">Добавить кандидата</a>
-                <a class="nav-item nav-link active" th:href="@{/formAddUser}">Регистрация<span class="sr-only">(current)</span></a>
-            </div>
-            <div class="navbar-nav ml-auto">
-                <a class="nav-item nav-link" th:href="@{/loginPage}">
-                    <span th:text="${user.name}"></span>
-                    <span> | Войти</span>
-                </a>
-            </div>
-        </div>
-    </nav>
     <div class="row pt-3">
         <div class="card" style="width: 100%">
             <div class="card-header">
@@ -60,6 +38,12 @@
                         <input type="password" class="form-control" name="password" id="password">
                     </div>
                     <button type="submit" class="btn btn-primary">Сохранить</button>
+                </form>
+            </div>
+            <div class="card-header">
+                <form th:action="@{/loginPage}" method="GET">
+                    Уже зарегистрированы?
+                    <button type="submit" class="btn btn-primary">Авторизоваться</button>
                 </form>
             </div>
         </div>
